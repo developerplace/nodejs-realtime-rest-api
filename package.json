@@ -1,15 +1,15 @@
 {
   "name": "nodejs-realtime-rest-api",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "NodeJS (Realtime REST API) using NodeJS, Express, SocketIO, Swagger, CI/CD and more",
   "keywords": [
     "NodeJS",
-    " Express",
-    " SocketIO",
-    " Swagger",
-    " CI/CD",
-    " REST",
-    " Realtime"
+    "Express",
+    "SocketIO",
+    "Swagger",
+    "CI/CD",
+    "REST",
+    "Realtime"
   ],
   "scripts": {
     "build": "packer build",
@@ -28,7 +28,14 @@
     "lint:script": "packer lint --script",
     "format": "packer format"
   },
-  "author": "Developer Place <contact@developerplace.me>",
+  "author": "Developer Place <developerplace@validation.global>",
+  "contributors": [
+    {
+      "name": "Alexander Daza",
+      "email": "root@alexanderdaza.com",
+      "url": "https://www.alexanderdaza.com"
+    }
+  ],
   "repository": "https://github.com/developerplace/nodejs-realtime-rest-api.git",
   "license": "Apache-2.0",
   "homepage": "https://github.com/developerplace/nodejs-realtime-rest-api",

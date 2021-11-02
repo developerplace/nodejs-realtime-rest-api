@@ -1,4 +1,4 @@
-# :rocket: nodejs-realtime-rest-api
+# :rocket: NodeJS (Realtime REST API)
 
 [![Build Status](https://travis-ci.org/yohangz/packer-cli.svg?branch=master)](https://travis-ci.org/yohangz/packer-cli)
 [![MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](https://github.com/yohangz/packer-cli/blob/master/LICENSE)
