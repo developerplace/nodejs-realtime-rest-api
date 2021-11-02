@@ -1,0 +1,7 @@
+###
+### mocha.opts
+###
+
+--require ./helpers/babel.js
+--require ./helpers/exclude.js
+--watch-extensions ts,tsx,js,jsx

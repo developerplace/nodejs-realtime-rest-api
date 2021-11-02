@@ -1,0 +1,75 @@
+{
+  "name": "nodejs-realtime-rest-api",
+  "version": "1.0.0",
+  "description": "NodeJS (Realtime REST API) using NodeJS, Express, SocketIO, Swagger, CI/CD and more",
+  "keywords": [
+    "NodeJS",
+    " Express",
+    " SocketIO",
+    " Swagger",
+    " CI/CD",
+    " REST",
+    " Realtime"
+  ],
+  "scripts": {
+    "build": "packer build",
+    "watch": "packer watch",
+    "start": "npm run watch",
+    "test": "packer test --watch",
+    "test:coverage": "packer test --coverage --watch",
+    "test:ci": "packer test",
+    "test:coverage:ci": "packer test --coverage",
+    "clean": "packer clean",
+    "preversion": "npm run build",
+    "postversion": "git push && git push --tags",
+    "prerelease": "npm run build",
+    "release": "npm publish dist",
+    "lint": "packer lint",
+    "lint:script": "packer lint --script",
+    "format": "packer format"
+  },
+  "author": "Developer Place <contact@developerplace.me>",
+  "repository": "https://github.com/developerplace/nodejs-realtime-rest-api.git",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/developerplace/nodejs-realtime-rest-api",
+  "dependencies": {
+    "@babel/runtime-corejs3": "^7.7.7",
+    "core-js": "^3.6.1",
+    "handlebars": "^4.5.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/register": "^7.7.7",
+    "@babel/plugin-transform-runtime": "^7.7.6",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "mocha": "^7.0.0",
+    "chai": "^4.2.0",
+    "nyc": "^15.0.0",
+    "ignore-styles": "^5.0.1",
+    "packer-cli": "^2.17.8"
+  },
+  "private": false,
+  "nyc": {
+    "extension": [
+      ".js",
+      ".jsx",
+      ".ts",
+      ".tsx"
+    ],
+    "include": [
+      "src/**"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary",
+      "html"
+    ],
+    "temp-dir": ".tmp/nyc_output"
+  }
+}
