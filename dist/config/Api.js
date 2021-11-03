@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const helmet_1 = __importDefault(require("helmet"));
 const path_1 = __importDefault(require("path"));
 const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
@@ -22,6 +23,7 @@ class Api {
      * @private
      */
     middlewares() {
+        this.app.use((0, helmet_1.default)());
         this.app.use(express_1.default.json());
         this.app.use((0, cookie_parser_1.default)());
         this.app.use((0, cors_1.default)({ origin: true, credentials: true }));
