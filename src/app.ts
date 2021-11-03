@@ -1,6 +1,7 @@
 import { config } from "dotenv";
 import { Logger } from "./utils/Logger";
 import Server from "./config/Server";
+import Database from "./config/Database";
 
 /**
  * Configure environment vars
@@ -11,6 +12,7 @@ config();
  * Define server instance
  */
 const server: Server = Server.instance;
+Database.instance;
 
 /**
  * Run application
