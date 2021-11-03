@@ -13,10 +13,10 @@ export default class Database {
     mongoose.connect(mongoUri, {}, (err) => {
       if (err) {
         Logger.error(err.message);
+        process.exit();
       } else {
         Logger.debug(`MongoDB connected successfully`);
       }
-      process.exit();
     });
   }
 

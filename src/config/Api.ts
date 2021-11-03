@@ -1,5 +1,4 @@
 import express, {Application, NextFunction, Request, Response} from "express";
-import session from "express-session";
 import path from "path";
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -29,11 +28,6 @@ export default class Api {
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
     this.app.use(`/public`, express.static(path.join(__dirname, '../../public')));
-    session({
-      secret: process.env.APP_SESSION_SECRET || "MyStupidSecret",
-      resave: true,
-      saveUninitialized: true
-    });
     Logger.debug("Application middlewares initialized");
   }
 
