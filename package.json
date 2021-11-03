@@ -30,9 +30,9 @@
   "types": "dist/app.d.ts",
   "scripts": {
     "build": "tsc",
-    "start": "ts-node ./src/app.ts",
-    "start:prod": "npm run build && node ./dist/src/app.js",
-    "start:nodemon": "./node_modules/nodemon/bin/nodemon.js",
+    "start": "npm run build && node ./dist/src/app.js",
+    "dev": "./node_modules/nodemon/bin/nodemon.js",
+    "dev:ts-node": "ts-node ./src/app.ts",
     "test": "node node_modules/mocha/bin/mocha --require ts-node/register test/*.test.ts --reporter spec",
     "lint": "eslint --ext ts . package.json",
     "lint:fix": "eslint --ext ts --fix . package.json",
