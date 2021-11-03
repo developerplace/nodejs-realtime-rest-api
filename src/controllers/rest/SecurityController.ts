@@ -60,7 +60,6 @@ class SecurityController {
       response.data = {
         token
       };
-      Logger.debug(JSON.stringify(response));
       res.status(response.statusCode).send(response);
     } catch (e) {
       res.status(response.statusCode).send(response);

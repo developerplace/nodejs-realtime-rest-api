@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { validationResult } from "express-validator";
-import { iResponse } from "./interfaces/IResponse";
+import { iResponse } from "../interfaces/IResponse";
 
 /**
  * Validate required parameters on REST request

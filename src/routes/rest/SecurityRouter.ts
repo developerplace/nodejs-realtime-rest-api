@@ -1,6 +1,6 @@
 import { Router } from "express";
 import {check} from "express-validator";
-import { validateRequestParameters } from "../../RestMiddleware";
+import { validateRequestParameters } from "../../middlewares/RestMiddleware";
 import cache from "../../utils/Cache";
 import { securityController } from "../../controllers/rest/SecurityController";
 
