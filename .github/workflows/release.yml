@@ -19,13 +19,13 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Install semantic-release extra plugins
-        run: npm install --save-dev @semantic-release/changelog @semantic-release/git
+        run: yarn add @semantic-release/changelog @semantic-release/git -D
       - name: Prettier
         run: yarn run prettier:fix
       - name: Lint
         run: yarn run lint:fix
       - name: Test
-        run: yarn run test:unit --if-present
+        run: yarn run test
       - name: Build
         run: yarn run build
       - name: Docs
