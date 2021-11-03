@@ -16,6 +16,10 @@ export default class Api {
     this.errorHandler();
   }
 
+  /**
+   * Express basic middlewares
+   * @private
+   */
   private middlewares() {
     this.app.use(express.json());
     this.app.use(cors({origin: true, credentials: true}));
@@ -25,10 +29,18 @@ export default class Api {
     Logger.debug("Application middlewares initialized");
   }
 
+  /**
+   * Express API Routes
+   * @private
+   */
   private routes() {
 
   }
 
+  /**
+   * Express error handler
+   * @private
+   */
   private errorHandler() {
     this.app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
       if (err) {
