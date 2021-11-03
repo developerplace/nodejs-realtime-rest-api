@@ -24,6 +24,8 @@ jobs:
         run: yarn run prettier:fix
       - name: Lint
         run: yarn run lint:fix
+      - name: Test
+        run: yarn run test
       - name: Build
         run: yarn run build
       - name: Docs
