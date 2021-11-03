@@ -1,11 +1,13 @@
-// This is the application entry point
+import { config } from "dotenv";
+import Server from "./config/Server";
 
-export class App {
-  version: string;
+// Configure environment vars
+config();
 
-  constructor() {
-    console.log('Awesome Api is running!');
-  }
-}
+// Define server instance
+const server: Server = Server.instance;
 
-const app = new App();
+// Run application
+server.start(async (): Promise<void> => {
+  console.log(`${process.env.APP_NAME} - ${process.env.APP_DESCRIPTION} running on ${process.env.APP_URL}:${Number(process.env.APP_PORT) || 3000}`);
+});
