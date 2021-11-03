@@ -1,6 +1,0 @@
-**/*.min.js
-**/*.min.css
-coverage
-dist
-.idea
-.tmp
