@@ -29,5 +29,9 @@
     "noImplicitThis": true,
     "alwaysStrict": true,
     "esModuleInterop": true
+  },
+  "typedocOptions": {
+    "entryPoints": ["src/app.ts"],
+    "out": "docs"
   }
 }
