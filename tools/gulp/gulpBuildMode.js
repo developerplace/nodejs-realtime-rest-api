@@ -1,3 +1,3 @@
-const BuildMode = Object.freeze({ 'prod': 'prod', 'dev': 'dev' });
+const BuildMode = Object.freeze({ prod: 'prod', dev: 'dev' });
 
 module.exports = BuildMode;

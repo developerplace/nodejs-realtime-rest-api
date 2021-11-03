@@ -1,13 +1,10 @@
-const
-  gulp = require('gulp'),
+const gulp = require('gulp'),
   del = require('del'),
-  ghPages = require('gulp-gh-pages')
-  gulpTypedoc = require('gulp-typedoc'),
-  spawn = require('cross-spawn'),
-  tsc = require('gulp-typescript'),
-  config = require('../../gulpfile.config')
-  ;
-
+  ghPages = require('gulp-gh-pages');
+(gulpTypedoc = require('gulp-typedoc')),
+  (spawn = require('cross-spawn')),
+  (tsc = require('gulp-typescript')),
+  (config = require('../../gulpfile.config'));
 
 /**
  * Remove all generated docs.
@@ -53,10 +50,7 @@ gulp.task('docs-build', build);
  * Publish typedoc documents to gh-pages
  */
 function publish() {
-  return gulp
-    .src(config.docsFiles)
-    .pipe(ghPages())
-    ;
+  return gulp.src(config.docsFiles).pipe(ghPages());
 }
 module.exports.publish = publish;
 gulp.task('docs-publish', publish);

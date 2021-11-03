@@ -1,8 +1,9 @@
 name: Release
 on:
   pull_request:
-    branches: [ main ]
-    types: [ closed ]
+    branches: [main]
+    types: [closed]
+  workflow_dispatch:
 
 jobs:
   release:
@@ -19,6 +20,10 @@ jobs:
         run: npx ci
       - name: Install semantic-release extra plugins
         run: npm install --save-dev @semantic-release/changelog @semantic-release/git
+      - name: Prettier
+        run: npm run prettier:fix
+      - name: Lint
+        run: npm run lint:fix
       - name: Test
         run: npm run test:unit --if-present
       - name: Build

@@ -1,9 +1,6 @@
-const
-  gulp = require('gulp'),
+const gulp = require('gulp'),
   tslint = require('gulp-tslint'),
-  config = require('../../gulpfile.config')
-  ;
-
+  config = require('../../gulpfile.config');
 /**
  * Lint all custom TypeScript files.
  */
@@ -13,15 +10,14 @@ gulp.task('ts-lint', function () {
     .src(config.tsSourceFiles)
     .pipe(
       tslint({
-        configuration: "tslint.json",
-        formatter: "stylish"
+        configuration: 'tslint.json',
+        formatter: 'stylish',
       })
     )
     .pipe(
       tslint.report({
         emitError: false,
-        allowWarnings: true
+        allowWarnings: true,
       })
-    )
-    ;
+    );
 });

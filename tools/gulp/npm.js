@@ -1,10 +1,7 @@
-const
-  gulp = require('gulp'),
+const gulp = require('gulp'),
   spawn = require('cross-spawn'),
   GitWrapper = require('dotup-ts-git-wrapper').GitWrapper,
-  config = require('../../gulpfile.config')
-  ;
-
+  config = require('../../gulpfile.config');
 async function publish() {
   const git = new GitWrapper();
   if (git.hasChanges()) {
@@ -16,7 +13,7 @@ async function publish() {
 module.exports.publish = publish;
 
 async function link() {
-  config.npmLink.forEach(item => {
+  config.npmLink.forEach((item) => {
     const projectToLinkPath = path.join(config.rootPath, item.path, item.name);
     // Call 'npm link' in the project path
     spawn.sync('npm', ['link'], { stdio: 'inherit', cwd: projectToLinkPath });

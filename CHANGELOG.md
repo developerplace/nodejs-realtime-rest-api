@@ -4,18 +4,20 @@
 
 ### Added
 
-*Use this section to add the details of your unreleased version*
+_Use this section to add the details of your unreleased version_
 
 ## [0.0.1] - 02-11-2021
 
 ### Added
+
 > Initial project structure.
 
 ### Features
+
 - Automatic documentation generation.
 - Karma test runner.
 - Jasmine
- testing tool support.
+  testing tool support.
 - Code Coverage with istanbul.
 - Build process with Gulp.
 - Debugging your sources with sourcemaps.
@@ -25,7 +27,7 @@
 - Lint support with
   - [JSHint](http://jshint.com/)
   - [TSLint](https://www.npmjs.com/package/tslint)
-  
 
 ---
-*To maintain a proper CHANGELOG.md read [Keep a CHANGELOG](http://keepachangelog.com/)*
+
+_To maintain a proper CHANGELOG.md read [Keep a CHANGELOG](http://keepachangelog.com/)_

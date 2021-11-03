@@ -6,7 +6,6 @@ const fs = require('fs');
 const path = require('path');
 
 class AwsLambda {
-
   constructor(rootPath, region, profile) {
     this.rootPath = rootPath || '';
     this.region = region || 'eu-west-1';
@@ -14,70 +13,62 @@ class AwsLambda {
   }
 
   getLambda() {
-    return new AWS.Lambda(
-      {
-        region: this.region
-      }
-    );
+    return new AWS.Lambda({
+      region: this.region,
+    });
   }
 
   async functionExists(functionName) {
-
     const lambda = this.getLambda();
 
     return new Promise((resolve, reject) =>
-
-      lambda.getFunction(
-        {
-          FunctionName: functionName
-        }
-      ).promise().then(
-        data => {
-          resolve(true);
-        },
-        err => {
-          if (err.statusCode === 404) {
-            resolve(false);
-          } else {
-            reject(err);
+      lambda
+        .getFunction({
+          FunctionName: functionName,
+        })
+        .promise()
+        .then(
+          (data) => {
+            resolve(true);
+          },
+          (err) => {
+            if (err.statusCode === 404) {
+              resolve(false);
+            } else {
+              reject(err);
+            }
           }
-        }
-      )
-
+        )
     );
-
   }
 
   async updateFunctionCode(lambdaConfig) {
-
     const fileContent = fs.readFileSync(this.getPath(lambdaConfig.targetFile));
     const buffer = Buffer.from(fileContent);
 
     const lambda = this.getLambda();
 
     return new Promise((resolve, reject) =>
-
-      lambda.updateFunctionCode(
-        {
+      lambda
+        .updateFunctionCode({
           FunctionName: lambdaConfig.params.FunctionName,
           Publish: lambdaConfig.params.Publish,
-          ZipFile: buffer
-        }
-      ).promise().then(
-        data => {
-          resolve(true);
-        },
-        err => {
-          if (err.statusCode === 404) {
-            resolve(false);
-          } else {
-            reject(err);
+          ZipFile: buffer,
+        })
+        .promise()
+        .then(
+          (data) => {
+            resolve(true);
+          },
+          (err) => {
+            if (err.statusCode === 404) {
+              resolve(false);
+            } else {
+              reject(err);
+            }
           }
-        }
-      )
-
+        )
     );
-
   }
 
   async pack(lambdaConfig) {
@@ -87,9 +78,8 @@ class AwsLambda {
     return new Promise((resolve, reject) => {
       archive
         .directory(this.getPath(lambdaConfig.sourcePath), false)
-        .on('error', err => reject(err))
-        .pipe(stream)
-        ;
+        .on('error', (err) => reject(err))
+        .pipe(stream);
 
       stream.on('close', () => resolve());
       archive.finalize();
@@ -99,7 +89,7 @@ class AwsLambda {
   getPath(...paths) {
     var args = Array.isArray(paths) ? paths : Array.from(paths);
     let result = this.rootPath;
-    args.forEach(element => {
+    args.forEach((element) => {
       result = path.join(result, element);
     });
     return result;
@@ -133,7 +123,6 @@ class AwsLambda {
   //   );
 
   // }
-
 }
 
 module.exports = AwsLambda;

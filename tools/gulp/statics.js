@@ -1,11 +1,8 @@
-const
-  gulp = require('gulp'),
+const gulp = require('gulp'),
   del = require('del'),
-  config = require('../../gulpfile.config')
-  ;
-
+  config = require('../../gulpfile.config');
 function clean() {
-  const f = config.statics.map(x => x.targetPath);
+  const f = config.statics.map((x) => x.targetPath);
   return del(f);
 }
 module.exports.clean = clean;
@@ -20,13 +17,11 @@ module.exports.postBuild = postBuild;
 gulp.task('statics-copy', postBuild);
 
 async function getCopyStream(source, target, opts) {
-  const stream = gulp
-    .src(source, opts)
-    .pipe(gulp.dest(target));
+  const stream = gulp.src(source, opts).pipe(gulp.dest(target));
 
   return new Promise(function (resolve, reject) {
     stream.on('end', () => resolve(stream));
-    stream.on('error', e=> reject(e));
+    stream.on('error', (e) => reject(e));
   });
 }
 

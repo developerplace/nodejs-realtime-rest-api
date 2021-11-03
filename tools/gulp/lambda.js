@@ -1,11 +1,8 @@
-const
-  gulp = require('gulp'),
+const gulp = require('gulp'),
   del = require('del'),
   AwsLambda = require('../scripts/AwsLambda'),
   config = require('../../gulpfile.config'),
-  path = require('path')
-  ;
-
+  path = require('path');
 const rootPath = path.join(__dirname, '..', '..');
 
 // const config = new Config();

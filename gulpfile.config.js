@@ -13,11 +13,10 @@ const Paths = {
   targetPath: 'dist',
 
   // docs
-  docsPath: 'docs'
-}
+  docsPath: 'docs',
+};
 
-const GulpConfig =  {
-
+const GulpConfig = {
   buildMode: BuildMode.dev,
 
   // Root path
@@ -42,8 +41,8 @@ const GulpConfig =  {
   statics: [
     {
       sourcePath: `${Paths.sourcePath}/assets/**`,
-      targetPath: `${Paths.targetPath}/assets`
-    }
+      targetPath: `${Paths.targetPath}/assets`,
+    },
   ],
 
   npmLink: [
@@ -55,7 +54,7 @@ const GulpConfig =  {
     //   name: 'module-name2',
     //   path: '../'
     // }
-  ]
+  ],
   // lambda: [
   //   {
   //     sourcePath: `${Paths.targetPath}/skill`,
@@ -66,6 +65,6 @@ const GulpConfig =  {
   //     }
   //   }
   // ]
-}
+};
 
 module.exports = GulpConfig;

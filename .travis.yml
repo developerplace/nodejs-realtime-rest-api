@@ -1,12 +1,12 @@
-language : node_js
-node_js :
- - stable
+language: node_js
+node_js:
+  - stable
 install:
- - npm install
+  - npm install
 script:
- - npm test
+  - npm test
 before_script:
- - npm run build
+  - npm run build
 branches:
- only:
-  - main
+  only:
+    - main

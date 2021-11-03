@@ -28,7 +28,6 @@ class AlexaSkillPublisher {
   }
 
   generateManifest(buildMode) {
-
     console.log(`template file: ${this.template}`);
     this.loadConfiguration(buildMode);
 
@@ -52,7 +51,7 @@ class AlexaSkillPublisher {
   getPath(...paths) {
     var args = Array.isArray(paths) ? paths : Array.from(paths);
     let result = this.rootPath;
-    args.forEach(element => {
+    args.forEach((element) => {
       result = path.join(result, element);
     });
     return result;

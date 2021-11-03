@@ -1,4 +1,5 @@
-class AwaitThenable { // extends Promise<T> {
+class AwaitThenable {
+  // extends Promise<T> {
 
   constructor(thenable) {
     // super((resolve, reject) => ten.then(resolve, reject));
@@ -8,7 +9,6 @@ class AwaitThenable { // extends Promise<T> {
   async await() {
     return this.promise;
   }
-
 }
 
 module.exports = AwaitThenable;

@@ -1,18 +1,15 @@
-const
-  gulp = require('gulp'),
+const gulp = require('gulp'),
   del = require('del'),
   tsc = require('gulp-typescript'),
   sourcemaps = require('gulp-sourcemaps'),
-  config = require('../../gulpfile.config')
-  ;
-
+  config = require('../../gulpfile.config');
 const tsProject = tsc.createProject('tsconfig.json');
 
 const keys = {
   build: 'build',
   clean: 'build-clean',
   // compile: 'build-compile',
-  watch: 'build-watch'
+  watch: 'build-watch',
 };
 module.exports.keys = keys;
 
@@ -29,17 +26,11 @@ gulp.task(keys.clean, clean);
  * Compile TypeScript
  */
 function build() {
-
-  var tsResult = tsProject.src()
-    .pipe(sourcemaps.init())
-   .pipe(tsProject());
+  var tsResult = tsProject.src().pipe(sourcemaps.init()).pipe(tsProject());
 
   tsResult.dts.pipe(gulp.dest(config.targetPath));
 
-  return tsResult.js
-    .pipe(sourcemaps.write('.', { sourceRoot: './', includeContent: false }))
-    .pipe(gulp.dest(config.targetPath))
-    ;
+  return tsResult.js.pipe(sourcemaps.write('.', { sourceRoot: './', includeContent: false })).pipe(gulp.dest(config.targetPath));
 }
 module.exports.build = build;
 gulp.task(keys.build, build);
