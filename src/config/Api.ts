@@ -1,8 +1,11 @@
-import express, {Application, NextFunction, Request, Response} from "express";
+import express, { Application, NextFunction, Request, Response } from "express";
 import path from "path";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import { iResponse } from "../interfaces/IResponse";
 import { Logger } from "../utils/Logger";
+
+import PublicRouter from "../routes/rest/PublicRouter";
 
 export default class Api {
 
@@ -22,10 +25,11 @@ export default class Api {
    */
   private middlewares() {
     this.app.use(express.json());
-    this.app.use(cors({origin: true, credentials: true}));
+    this.app.use(cookieParser());
+    this.app.use(cors({ origin: true, credentials: true }));
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
-    this.app.use(`/public`, express.static(path.join(__dirname, '../../public')));
+    this.app.use(`/public`, express.static(path.join(__dirname, "../../public")));
     Logger.debug("Application middlewares initialized");
   }
 
@@ -34,7 +38,7 @@ export default class Api {
    * @private
    */
   private routes() {
-
+    this.app.use('/api', PublicRouter);
   }
 
   /**
@@ -47,19 +51,21 @@ export default class Api {
         const response: iResponse = {
           error: true,
           statusCode: 500,
-          statusMessage: 'Internal server error',
+          statusMessage: "Internal server error",
           devMessage: err.message,
-          uiMessage: 'An unexpected error occurred while processing your request',
+          uiMessage: "An unexpected error occurred while processing your request",
           data: {
             name: err.name,
             message: err.message,
-            stack: err.stack
-          }
+            stack: err.stack,
+          },
         };
         Logger.error("Error cached");
         Logger.error(err.message);
         res.status(response.statusCode).send(response);
-      } else next();
+      } else {
+        next();
+      }
     });
   }
 
