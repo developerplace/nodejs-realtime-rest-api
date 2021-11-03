@@ -29,6 +29,7 @@
   "main": "dist/app.js",
   "types": "dist/app.d.ts",
   "scripts": {
+    "clean": "rm -rf dist docs logs",
     "build": "tsc",
     "start": "npm run build && node ./dist/src/app.js",
     "dev": "./node_modules/nodemon/bin/nodemon.js",

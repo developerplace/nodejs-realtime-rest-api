@@ -142,3 +142,7 @@ typings/
 .vscode-test/
 *.vsix
 /images/*.stg
+
+# other
+dist
+docs
