@@ -1,4 +1,5 @@
 import express, { Application, NextFunction, Request, Response } from "express";
+import helmet from "helmet";
 import path from "path";
 import cors from "cors";
 import cookieParser from "cookie-parser";
@@ -24,6 +25,7 @@ export default class Api {
    * @private
    */
   private middlewares() {
+    this.app.use(helmet());
     this.app.use(express.json());
     this.app.use(cookieParser());
     this.app.use(cors({ origin: true, credentials: true }));
