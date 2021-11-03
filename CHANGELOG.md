@@ -1,9 +1,17 @@
-# [1.1.0](https://github.com/developerplace/nodejs-realtime-rest-api/compare/v1.0.0...v1.1.0) (2021-11-03)
+# [1.2.0](https://github.com/developerplace/nodejs-realtime-rest-api/compare/v1.1.0...v1.2.0) (2021-11-03)
 
 
 ### Features
 
-* **test on release:** implemented test on release ([191aee0](https://github.com/developerplace/nodejs-realtime-rest-api/commit/191aee08c709c2bacae896c222fbbf02b19fb5f4))
+* **express session:** implemented express session ([d481b3d](https://github.com/developerplace/nodejs-realtime-rest-api/commit/d481b3dd9f431ead61a03163b4c95a35b372626a))
+* **redis cache:** implemented express cache redis ([a51c05c](https://github.com/developerplace/nodejs-realtime-rest-api/commit/a51c05c366982af3e155ad6990341a075d7ca4db))
+* **session shared:** shared session between express and socketio ([ea69a92](https://github.com/developerplace/nodejs-realtime-rest-api/commit/ea69a92914e12fc994d327b199e8349fd66137c0))
+
+# [1.1.0](https://github.com/developerplace/nodejs-realtime-rest-api/compare/v1.0.0...v1.1.0) (2021-11-03)
+
+### Features
+
+- **test on release:** implemented test on release ([191aee0](https://github.com/developerplace/nodejs-realtime-rest-api/commit/191aee08c709c2bacae896c222fbbf02b19fb5f4))
 
 # 1.0.0 (2021-11-03)
 
