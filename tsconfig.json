@@ -1,0 +1,33 @@
+{
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "spec",
+    "test",
+    "node_modules",
+    "src/**/*.test.ts",
+    "src/**/*.spec.ts"
+  ],
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "commonjs",
+    "lib": [
+      "es6",
+      "es2017",
+      "dom"
+    ],
+    "declaration": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "strict": false,
+    "noImplicitAny": true,
+    "strictNullChecks": false,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "esModuleInterop": true
+  }
+}
