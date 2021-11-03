@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Client test</title>
+</head>
+<body>
+<h1>Running...</h1>
+<p id="socketId" style="display: none;">Socket id: <span id="id"></span></p>
+<script src="/socket.io/socket.io.min.js"></script>
+<script>
+  const connectSocket = () => {
+    const socket = io();
+    socket.on("connected", data => {
+      document.getElementById("id").innerHTML = data.data.socketId;
+      document.getElementById("socketId").removeAttribute("style");
+    });
+  }
+  connectSocket();
+</script>
+</body>
+</html>
