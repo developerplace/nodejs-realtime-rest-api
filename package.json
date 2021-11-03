@@ -45,7 +45,9 @@
   },
   "dependencies": {
     "dotenv": "10.0.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "folder-logger": "1.0.9",
+    "moment": "2.29.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^14.1.0",
