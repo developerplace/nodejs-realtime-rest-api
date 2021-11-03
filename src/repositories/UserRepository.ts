@@ -1,17 +1,11 @@
-import { compareSync } from "bcrypt";
+import { compareSync, genSaltSync, hashSync } from "bcrypt";
 import { encode, decode } from "jwt-simple";
 import moment from "moment";
 import { iUser } from "../interfaces/models/IUserModel";
+import Helpers from "../utils/Helpers";
 import BaseRepository from "./BaseRepository";
 
 export default class UserRepository extends BaseRepository<iUser> {
-
-  /**
-   * Get all users
-   */
-  public async getAllUsers(): Promise<iUser[]> {
-    return await this.getAllDocuments();
-  }
 
   /**
    * Get all users filtered by parameters
@@ -35,6 +29,11 @@ export default class UserRepository extends BaseRepository<iUser> {
     return await this.getOneDocumentByParameters({ email: userData.email });
   }
 
+  /**
+   * Activate user account
+   * @param email
+   * @param otpCode
+   */
   public async activateUserAccount(email: string, otpCode: string): Promise<iUser> {
     let storedUser: object = await this.getOneDocumentByParameters({
                                                                      email: email,
@@ -100,6 +99,73 @@ export default class UserRepository extends BaseRepository<iUser> {
       throw new Error("Expired token");
     }
     return user;
+  }
+
+  /**
+   * Update user password account
+   * @param userData
+   * @param newPassword
+   */
+  public async updatePasswordUserAccount(userData: iUser, newPassword: string): Promise<iUser> {
+    const salt = genSaltSync(10);
+    userData.password = hashSync(newPassword, salt);
+    userData.otpCode = 0;
+    await this.updateDocument(userData._id, userData);
+    return await this.getOneDocumentByParameters({ _id: userData._id });
+  }
+
+  /**
+   * Active or inactive user account
+   * @param userData
+   * @param active
+   */
+  public async activeInactiveUserAccount(userData: iUser, active: boolean): Promise<iUser> {
+    userData.active = active;
+    await this.updateDocument(userData._id, userData);
+    return await this.getOneDocumentByParameters({ _id: userData._id });
+  }
+
+  /**
+   * Enable or disable user account
+   * @param userData
+   * @param enabled
+   */
+  public async enableDisableUserAccount(userData: iUser, enabled: boolean): Promise<iUser> {
+    userData.enabled = enabled;
+    await this.updateDocument(userData._id, userData);
+    return await this.getOneDocumentByParameters({ _id: userData._id });
+  }
+
+  /**
+   * Generate OTP for user account
+   * @param email
+   */
+  public async generateOtpForgotPasswordUserAccount(email: string): Promise<iUser> {
+    let storedUser: iUser = await this.getOneDocumentByParameters({ email: email });
+    if (!storedUser) {
+      throw new Error("User not exist");
+    }
+    storedUser.otpCode = Helpers.generateOtp();
+    await this.updateDocument(storedUser._id, storedUser);
+    return await this.getOneDocumentByParameters({ _id: storedUser._id });
+  }
+
+  /**
+   * Recovery password for user account
+   * @param email
+   * @param otpCode
+   * @param newPassword
+   */
+  public async recoveryPasswordUserAccount (email: string, otpCode: number, newPassword: string): Promise<iUser> {
+    let storedUser: iUser = await this.getOneDocumentByParameters({email: email, otpCode: otpCode});
+    if (!storedUser) {
+      throw new Error("User not exist or invalid OTP");
+    }
+    const updatePassword:iUser = await this.updatePasswordUserAccount(storedUser, newPassword);
+    if (!updatePassword) {
+      throw new Error("Error updating your password");
+    }
+    return storedUser;
   }
 
 }

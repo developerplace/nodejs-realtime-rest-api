@@ -7,6 +7,7 @@ import { iResponse } from "../interfaces/IResponse";
 import { Logger } from "../utils/Logger";
 
 import PublicRouter from "../routes/rest/PublicRouter";
+import SecurityRouter from "../routes/rest/SecurityRouter";
 
 export default class Api {
 
@@ -41,6 +42,7 @@ export default class Api {
    */
   private routes() {
     this.app.use('/api', PublicRouter);
+    this.app.use('/api/security', SecurityRouter);
   }
 
   /**
@@ -56,14 +58,9 @@ export default class Api {
           statusMessage: "Internal server error",
           devMessage: err.message,
           uiMessage: "An unexpected error occurred while processing your request",
-          data: {
-            name: err.name,
-            message: err.message,
-            stack: err.stack,
-          },
+          data: err,
         };
         Logger.error("Error cached");
-        Logger.error(err.message);
         res.status(response.statusCode).send(response);
       } else {
         next();

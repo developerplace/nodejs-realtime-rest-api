@@ -18,8 +18,15 @@ export default class Helpers {
       statusMessage,
       devMessage,
       uiMessage,
-      data
-    }
+      data,
+    };
+  }
+
+  /**
+   * Generate random OTP code
+   */
+  public static generateOtp(): number {
+    return Math.floor(100000 + Math.random() * 900000);
   }
 
 }
