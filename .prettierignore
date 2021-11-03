@@ -1,6 +1,6 @@
-**/*.min.js
-**/*.min.css
-coverage
-dist
 .idea
-.tmp
+.husky
+dist
+docs
+node_modules
+package-lock.json

@@ -1,0 +1,15 @@
+{
+  "generator-dotup-typescript": {
+    "promptValues": {
+      "useGit": true,
+      "useGithub": false,
+      "projectType": "app"
+    }
+  },
+  "generator-dotup-npm-package": {
+    "promptValues": {
+      "userName": "Developer Place",
+      "userEmail": "developerplace@validation.global"
+    }
+  }
+}
