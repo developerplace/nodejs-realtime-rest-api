@@ -1,6 +1,6 @@
 {
   "name": "nodejs-realtime-rest-api",
-  "version": "0.0.0",
+  "version": "0.0.0-semantic-release",
   "description": "NodeJS (Realtime REST API) using NodeJS, Express, SocketIO, Swagger, CI/CD and more",
   "keywords": [
     "NodeJS",
@@ -32,7 +32,8 @@
     "test": "node node_modules/mocha/bin/mocha --require ts-node/register test/*.test.ts --reporter spec",
     "docs": "typedoc --exclude \"**/*+(index|.spec|.test|.e2e).ts\"",
     "gh-pages": "rimraf docs && npm run docs && gh-pages -d docs",
-    "npm-publish": "npm publish"
+    "npm-publish": "npm publish",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@types/chai": "^4.2.22",
@@ -54,6 +55,9 @@
     "tslint": "^6.1.3",
     "tslint-microsoft-contrib": "^6.2.0",
     "typedoc": "^0.22.7",
-    "typescript": "^4.4.4"
+    "typescript": "^4.4.4",
+    "@commitlint/cli": "^14.1.0",
+    "@commitlint/config-conventional": "^14.1.0",
+    "husky": "^7.0.4"
   }
 }
